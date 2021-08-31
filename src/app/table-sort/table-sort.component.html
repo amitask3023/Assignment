@@ -1,0 +1,39 @@
+<div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h1 class="text-center">Assignment </h1>
+        <h3 class="text-center">Sort by Name and Date of joining table</h3>
+      </div>
+      <div class="col-6">
+          <h3>Name serach box</h3>
+          <input type="text" [(ngModel)]="searchText"
+          class="form-control" placeholder="Search By name" />
+      </div>
+      <div class="col-12 mt-5">
+        <table class="table table-striped">
+            <thead >
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col" >Name <i (click)="onSortClick($event)" class="my-icon fa fa-chevron-up"></i></th>
+                <th scope="col">Department</th>
+                <th scope="col">joining Date  <i (click)="sortJoiningDate($event)" class="my-icon fa fa-chevron-up"></i></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let candidate of candidate_data | filter : searchText; let i =index">
+                <td scope="row">{{candidate.id}}</td>
+                <td>{{candidate.name}}</td>
+                <td>{{candidate.department}}</td>
+                <td>{{candidate.joining_date | date:"MM/dd/yyyy"}}</td>
+              </tr>
+            </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="row">
+        <div class="col-4"> <button class="btn btn-danger mt-5 mb-5" (click)="removeAll()">Remove Development candidate</button></div>
+        <div class="col-4">
+            <button class="btn btn-primary mt-5 mb-5" (click)="calculateExperiace('')">candidates with experience more than 2 years</button>
+        </div>
+    </div>
+  </div>
